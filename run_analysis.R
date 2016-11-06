@@ -122,8 +122,8 @@ names(masterdt) = gsub("^t", "time", names(masterdt) )
 names(meanstdofmaster)= gsub("^f", "frequency", names(meanstdofmaster) )
 names(masterdt) = gsub("^f", "frequency", names(masterdt) )
 
-names(meanstdofmaster)= gsub("mag", "Magnitude", names(meanstdofmaster) )
-names(masterdt) = gsub("mag", "Magnitude", names(masterdt) )
+names(meanstdofmaster)= gsub("Mag", "Magnitude", names(meanstdofmaster) )
+names(masterdt) = gsub("Mag", "Magnitude", names(masterdt) )
 
 
 
@@ -133,7 +133,7 @@ tidy = masterdt[,lapply(.SD,mean  ), by=c("activity","subject") ]
 tidy2 = meanstdofmaster[,lapply(.SD,mean  ), by=c("activity","subject") ]
 
 write.csv(tidy2, file = "tidy.csv")
-write.table(tidy2, "tidy.txt", row.name=FALSE)
+write.table(tidy2, "tidy.txt", row.names=FALSE)
 
 tidy2
 
