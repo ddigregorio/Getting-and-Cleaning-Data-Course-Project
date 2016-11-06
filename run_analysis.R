@@ -113,7 +113,7 @@ meanstdofmaster$activity[meanstdofmaster$activity == 6 ] <- "LAYING"
 names(meanstdofmaster)= gsub("Acc", "Accelerator", names(meanstdofmaster) )
 names(masterdt) = gsub("Acc", "Accelerator", names(masterdt) )
 
-names(meanstdofmaster)= gsub("Gryo", "Gyroscope", names(meanstdofmaster) )
+names(meanstdofmaster)= gsub("Gyro", "Gyroscope", names(meanstdofmaster) )
 names(masterdt) = gsub("Gyro", "Gyroscope", names(masterdt))
 
 names(meanstdofmaster)= gsub("^t", "time", names(meanstdofmaster) )
@@ -133,6 +133,7 @@ tidy = masterdt[,lapply(.SD,mean  ), by=c("activity","subject") ]
 tidy2 = meanstdofmaster[,lapply(.SD,mean  ), by=c("activity","subject") ]
 
 write.csv(tidy2, file = "tidy.csv")
+write.table(tidy2, "tidy.txt", row.name=FALSE)
 
 tidy2
 
