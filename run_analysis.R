@@ -34,10 +34,10 @@ trainsub = data.table(read.table(trainsubfile))
 
 datanames = data.table(read.table(datanamesfile))
 
-print (dim(testdata))
-print (dim(traindata))
-print (dim(trainsub))
-print (dim(datanames))
+#print (dim(testdata))
+#print (dim(traindata))
+#print (dim(trainsub))
+#print (dim(datanames))
 
 ### features.txt contains the column names for X(data) type files
 
@@ -53,14 +53,14 @@ oldnames = names(data)
 datanamescharvec = datanames[[2]]
 setnames(data,oldnames, as.character(datanamescharvec))
 
-print (dim(lbl))
-print (dim(data))
-print (dim(sub))
+#print (dim(lbl))
+#print (dim(data))
+#print (dim(sub))
 
 # combine the tables
 masterdt = cbind(sub, data)
 masterdt = cbind(lbl, masterdt)
-print (dim(masterdt))
+#print (dim(masterdt))
 
 # clear the initial data.tables
 rm(lbl)
@@ -132,7 +132,7 @@ names(masterdt) = gsub("mag", "Magnitude", names(masterdt) )
 tidy = masterdt[,lapply(.SD,mean  ), by=c("activity","subject") ]
 tidy2 = meanstdofmaster[,lapply(.SD,mean  ), by=c("activity","subject") ]
 
-write.csv(tidy2, file = "tidy2.csv")
+write.csv(tidy2, file = "tidy.csv")
 
 tidy2
 
